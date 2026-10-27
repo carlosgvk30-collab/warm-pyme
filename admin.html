@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Leads | Agencia IA</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .btn-back {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 6px;
+        }
+        .btn-back:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado del Panel -->
+    <header>
+        <div class="logo">Panel Agencia IA</div>
+        <nav>
+            <a href="index.html">Ver Sitio Web</a>
+        </nav>
+        <button id="theme-toggle" class="btn-theme">Modo Oscuro</button>
+    </header>
+
+    <main class="admin-container">
+        <div class="admin-header">
+            <h2>Prospectos Registrados (Leads)</h2>
+            <button id="refresh-btn" class="btn-primary">Actualizar Lista</button>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Empresa</th>
+                        <th>Correo</th>
+                        <th>Desafío Principal</th>
+                        <th>Análisis de IA</th>
+                    </tr>
+                ></thead>
+                <tbody id="leads-table-body">
+                    <tr>
+                        <td colspan="4" style="text-align: center;">Cargando prospectos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- SCRIPTS (Librería de Supabase y Lógica de Administración) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Configuración de Supabase (las mismas credenciales de tu proyecto)
+        const SUPABASE_URL = 'https://mzojochsxcqqrnvbkixo.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im16b2pvY2hzeGNxcXJudmJraXhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4MzAyMjUsImV4cCI6MjEwMDQwNjIyNX0.-LQK0nJVazgO6RmUP7Y7pLf9W-wAS-lTZgenkfgkXB0'; // Asegúrate de colocar tu llave anónima completa aquí
+
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function cargarLeads() {
+            const tbody = document.getElementById('leads-table-body');
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">Cargando prospectos...</td></tr>';
+
+const { data, error } = await _supabase
+    .from('leads')
+    .select('*');
+            if (error) {
+                console.error('Error al cargar leads:', error);
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: red;">Error al cargar los datos: ${error.message}</td></tr>`;
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">No hay prospectos registrados todavía.</td></tr>';
+                return;
+            }
+
+            // Rellenar la tabla con los datos de Supabase
+            tbody.innerHTML = '';
+            data.forEach(lead => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${lead.nombre || ''}</td>
+                    <td>${lead.empresa || ''}</td>
+                    <td>${lead.email || ''}</td>
+                    <td>${lead.desafio || ''}</td>
+                    <td>${lead.ia_analisis || 'Sin análisis'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Ejecutar al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarLeads();
+
+            // Botón de actualizar
+            document.getElementById('refresh-btn').addEventListener('click', cargarLeads);
+        });
+    </script>
+</body>
+</html>

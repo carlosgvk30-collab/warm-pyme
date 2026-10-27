@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WARM (A Warm Place): agencia de marketing digital e inteligencia artificial para las pymes de El Banco, Magdalena. Tu marca, sin límites digitales.">
+    <title>WARM | Marketing digital e IA para pymes de El Banco, Magdalena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- SDK de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- Header / Barra de Navegación -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="brand" aria-label="A Warm Place PYME - inicio">
+                <picture class="brand-emblema">
+                    <source srcset="img/emblema.webp" type="image/webp">
+                    <img src="img/emblema.jpg" alt="" width="46" height="46">
+                </picture>
+                <span class="brand-text">A Warm Place<small>PYME</small></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quienes-somos">Nosotros</a></li>
+                <li><a href="#nuestros-servicios">Servicios</a></li>
+                <li><a href="#servicios">Diagnóstico</a></li>
+                <li><a href="auditoria.html" style="color: #FF6B00; font-weight: bold;">Auditoría Avanzada</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#seccion-auth">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Hero / Presentación de la Agencia -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-inner">
+        <div class="hero-content">
+            <span class="hero-eyebrow">Marketing digital e IA · El Banco, Magdalena</span>
+            <h1>Tu marca, sin límites <span class="accent">digitales</span></h1>
+            <p>En WARM transformamos negocios locales en marcas digitales poderosas. Conectamos a las pequeñas y medianas empresas con su audiencia ideal a través de estrategias creativas, innovadoras y medibles. Estamos aquí, en tu municipio, para que tu negocio crezca con tecnología cercana.</p>
+            <div class="hero-buttons">
+                <a href="#servicios" class="btn-primary">Probar el diagnóstico rápido</a>
+                <a href="#contacto" class="btn-outline">Hablemos de tu negocio</a>
+            </div>
+        </div>
+        <div class="hero-logo">
+            <picture>
+                <source srcset="img/logo-warm.webp" type="image/webp">
+                <img src="img/logo-warm.jpg" width="900" height="330" alt="Logo de A Warm Place PYME: una mano que sostiene una tienda con una flecha ascendente. Lema: Tu negocio, nuestra prioridad.">
+            </picture>
+        </div>
+    </div>
+    </section>
+
+    <main>
+        <!-- Identidad corporativa: misión, visión y valores -->
+        <section id="quienes-somos">
+            <h2>Quiénes somos</h2>
+            <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;"><strong style="color:#FF6B00;">A Warm Place</strong> · Agencia de inteligencia artificial para la gestión y optimización de pymes, nacida en El Banco, Magdalena.</p>
+
+            <div class="mv-grid">
+                <div class="portfolio-card">
+                    <span class="icono">🎯</span>
+                    <h3>Misión</h3>
+                    <p>En WARM transformamos negocios locales en marcas digitales poderosas. Conectamos a las pequeñas y medianas empresas con su audiencia ideal a través de estrategias creativas, innovadoras y medibles.</p>
+                </div>
+                <div class="portfolio-card">
+                    <span class="icono">🚀</span>
+                    <h3>Visión</h3>
+                    <p>Para 2030, WARM será la agencia de marketing digital de referencia para las pymes de El Banco, Magdalena, reconocida por su creatividad, resultados medibles y compromiso con el crecimiento sostenible de sus clientes. Aspiramos a expandir nuestra presencia a nivel nacional.</p>
+                </div>
+            </div>
+
+            <h3 class="subtitulo-seccion">Nuestros valores</h3>
+            <div class="valores-grid">
+                <div class="valor"><strong>Creatividad</strong><span>Buscamos soluciones innovadoras y originales para cada cliente.</span></div>
+                <div class="valor"><strong>Compromiso</strong><span>Entregamos resultados de calidad en los tiempos acordados.</span></div>
+                <div class="valor"><strong>Transparencia</strong><span>Comunicamos de manera honesta el desempeño de cada campaña.</span></div>
+                <div class="valor"><strong>Trabajo en equipo</strong><span>Colaboramos activamente para lograr objetivos comunes.</span></div>
+                <div class="valor"><strong>Responsabilidad social</strong><span>Apoyamos el crecimiento de negocios locales y el empleo juvenil.</span></div>
+            </div>
+        </section>
+
+        <!-- Sección de Simulador de Auditoría -->
+        <section id="servicios">
+            <h2>Diagnóstico Rápido de tu Negocio</h2>
+            <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Descubre en minutos dónde pierde tiempo y dinero tu negocio, y cómo la inteligencia artificial puede ayudarte a recuperarlo.</p>
+
+            <form id="form-diagnostico">
+                <div class="form-group">
+                    <label for="diag-sector">1. ¿En qué sector opera tu PYME?</label>
+                    <select id="diag-sector">
+                        <option value="Comercio y tiendas">Comercio y tiendas</option>
+                        <option value="Servicios profesionales">Servicios profesionales</option>
+                        <option value="Alimentos y restaurantes">Alimentos y restaurantes</option>
+                        <option value="Agropecuario y pesca">Agropecuario y pesca</option>
+                        <option value="Turismo y hospedaje">Turismo y hospedaje</option>
+                        <option value="Otro sector">Otro sector</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="diag-empleados">2. ¿Cuántas personas conforman tu equipo actual?</label>
+                    <input type="number" id="diag-empleados" value="2" min="1">
+                </div>
+                <div class="form-group">
+                    <label>3. Selecciona las herramientas que usas hoy para manejar tu negocio:</label>
+                    <label class="checkbox-label"><input type="checkbox" name="herramientas" value="excel" checked> Hojas de cálculo (Excel / Google Sheets manuales)</label>
+                    <label class="checkbox-label"><input type="checkbox" name="herramientas" value="whatsapp"> WhatsApp Business (Atención manual)</label>
+                    <label class="checkbox-label"><input type="checkbox" name="herramientas" value="papel"> Procesos en papel o correos dispersos</label>
+                </div>
+                <div class="form-group">
+                    <label for="diag-cuello">4. Describe brevemente el mayor cuello de botella operativo de tu negocio:</label>
+                    <textarea id="diag-cuello" rows="3" placeholder="Ej: Demora en responder pedidos y pasar datos a mano..."></textarea>
+                </div>
+                <button type="submit">Generar Diagnóstico y Plan IA</button>
+            </form>
+
+            <!-- Resultado del Simulador -->
+            <div id="resultado-diagnostico" style="display: none;">
+                <h3>📊 Resultados del Análisis Operativo</h3>
+                <div id="contenido-auditoria"></div>
+            </div>
+        </section>
+
+        <!-- Servicios de WARM (según el documento del proyecto) -->
+        <section id="nuestros-servicios">
+            <h2>Nuestros Servicios</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <span class="icono">📱</span>
+                    <h3>Gestión de Redes Sociales</h3>
+                    <p>Administramos tus perfiles y creamos una comunidad activa, con métricas claras de alcance y engagement.</p>
+                </div>
+                <div class="portfolio-card">
+                    <span class="icono">🎨</span>
+                    <h3>Diseño de Identidad de Marca</h3>
+                    <p>Logo, paleta de colores y manual de marca para que tu negocio se vea profesional y se recuerde.</p>
+                </div>
+                <div class="portfolio-card">
+                    <span class="icono">🎬</span>
+                    <h3>Creación de Contenido Digital</h3>
+                    <p>Publicaciones, fotos y videos cortos pensados para tu audiencia y para los formatos que hoy funcionan.</p>
+                </div>
+                <div class="portfolio-card">
+                    <span class="icono">📣</span>
+                    <h3>Publicidad en Meta Ads y Google Ads</h3>
+                    <p>Campañas ajustadas a tu presupuesto, medidas mes a mes para que sepas qué resultados te dejan.</p>
+                </div>
+                <div class="portfolio-card">
+                    <span class="icono">🤖</span>
+                    <h3>Consultoría en Marketing e IA</h3>
+                    <p>Diagnóstico de tu negocio con inteligencia artificial y un plan paso a paso para ordenar tus procesos y crecer.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto: canal de captación de clientes -->
+        <section id="contacto">
+            <h2>¿Listo para hacer crecer tu negocio?</h2>
+            <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">Cuéntanos de tu empresa y te contactamos para ver cómo podemos ayudarte. Es sin compromiso.</p>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-nombre">Nombre:</label>
+                    <input type="text" id="contact-nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="contact-empresa">Empresa o negocio:</label>
+                    <input type="text" id="contact-empresa" required placeholder="Nombre de tu negocio">
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Correo electrónico:</label>
+                    <input type="email" id="contact-email" required placeholder="correo@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="contact-desafio">¿Qué te gustaría mejorar en tu negocio?</label>
+                    <textarea id="contact-desafio" rows="3" required placeholder="Ej: Quiero tener más clientes por redes sociales..."></textarea>
+                </div>
+                <button type="submit">Enviar mi solicitud</button>
+            </form>
+        </section>
+        <!-- Acceso a la cuenta: inicio de sesión y registro (el menú enlaza a #seccion-auth) -->
+        <div class="form-card" id="seccion-auth" style="margin: 30px auto; max-width: 850px;">
+            <h3 class="form-section-title">🔑 Acceso a tu Cuenta</h3>
+            <div id="auth-form-container">
+        <div class="form-group">
+            <label for="auth-email">Correo Electrónico:</label>
+            <input type="email" id="auth-email" placeholder="tu-correo@empresa.com">
+        </div>
+        <div class="form-group">
+            <label for="auth-password">Contraseña:</label>
+            <input type="password" id="auth-password" placeholder="••••••••">
+        </div>
+        <div style="display: flex; gap: 10px; margin-top: 15px;">
+            <button id="btn-login" class="btn-primary" style="flex: 1;">Iniciar Sesión</button>
+            <button id="btn-registro" class="btn-secondary" style="flex: 1;">Registrarse</button>
+        </div>
+            </div>
+
+            <!-- Panel oculto cuando el usuario ya inició sesión -->
+            <div id="auth-user-info" style="display: none; text-align: center;">
+        <p>Sesión activa como: <strong id="user-email-display"></strong></p>
+        <button id="btn-logout" class="btn-secondary" style="margin-top: 10px; background-color: #ef4444; color: white; border: none;">Cerrar Sesión</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p class="slogan">Tu marca, sin límites digitales.</p>
+        <p>&copy; 2026 WARM · A Warm Place · El Banco, Magdalena</p>
+        <p class="footer-sub">Proyecto productivo SENATIC · Instituto Marlian · SENA Centro Acuícola y Agroindustrial de Gaira</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
